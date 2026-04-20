@@ -1,0 +1,276 @@
+:root {
+            --accent: #0e8824;
+            --accent-light: #0e8824;
+            --bg: #f0f7f1;
+            --card: #f8fbf8;
+            --muted: #6b7280
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            margin: 0;
+            background: var(--bg);
+            color: #0b0d12;
+            -webkit-font-smoothing: antialiased
+        }
+        
+
+        header {
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            padding: 28px 16px;
+            color: white
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 8px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700
+        }
+
+        nav a {
+            margin-left: 14px;
+            color: white;
+            text-decoration: none
+        }
+
+        .hero {
+            display: grid;
+            gap: 24px;
+            align-items: center;
+            padding: 36px 0
+        }
+
+        .card1 {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            /* flex: 1 */
+        }
+
+        .salat{
+width: 300px;
+height: 250px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 0 0 10px
+        }
+
+       #maslahatlar img{
+            width: 300px;
+            height: 300px;
+        }
+#maslahatlar strong{
+    display:block;
+}
+
+/* .card-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+    margin: 0 auto;
+} */
+        p.lead {
+            margin: 0 0 18px;
+            color: var(--muted)
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            padding: 10px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-block
+        }
+.hero-left h1{
+    text-align: center;
+}
+        .hero-right {
+            flex: 1;
+            text-align: center
+        }
+        .card-grid1 {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 36px;
+            margin-top: 24px
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            gap: 36px;
+            margin-top: 24px
+        }
+.card-grid1  .card {
+    width: 350px;
+    background: var(--card);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06)
+    
+}
+
+        .card {
+            background: var(--card);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06)
+           
+        
+            
+            
+        }
+        .sarlavha1{
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+         
+        }
+        .sarlavha{
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 50px;
+        }
+        img {
+            width: 200px;
+            transition: 0.3s;
+          }
+          
+          img:hover {
+            transform: scale(1.2);
+          }
+
+        .section {
+            padding: 28px 0
+        }
+
+        .small {
+            font-size: 14px;
+            color: var(--muted)
+        }
+
+        footer {
+            padding: 24px 0;
+            color: var(--muted);
+            text-align: center
+        }
+
+        @media (max-width:720px) {
+            h1 {
+                font-size: 22px
+            }
+
+            ;
+
+            .hero {
+                flex-direction: column-reverse
+            }
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #e6e9ee;
+            border-radius: 8px
+        }
+
+        .recipes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px
+        }
+
+        .recipe-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px
+        }
+
+        th,
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px
+        }
+
+        th {
+            background: #f0fdfa
+        }
+
+        .banner-img {
+            width: 50%;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08)
+        }
+
+        .tip-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 8px
+        }
+
+        .news-ticker {
+            background: #e6f0ff;
+            padding: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            white-space: nowrap
+        }
+
+        .news-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 15s linear infinite
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-100%)
+            }
+        }

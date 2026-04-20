@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Sog'lom Ovqatlanish</title>
+    <link rel="stylesheet" href="./css/media.css">
+<style>
+    /* =======================
+   GLOBAL
+======================= */
+* {
+    box-sizing: border-box;
+}
+
+/* =======================
+   TABLET
+======================= */
+@media (max-width: 992px) {
+
+    body {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    .sidebar nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+/* =======================
+   TELEFON
+======================= */
+@media (max-width: 600px) {
+
+    .sidebar {
+        padding: 10px;
+    }
+
+    nav p a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    input,
+    textarea {
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2>Admin</h2>
+    
+        <a href="./admin.html">🏠 Bosh sahifa</a>
+        <a href="./soglomadmin.html">🥗 Sog‘lom ovqat</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Sog`lom turmush tarzining 4 ta umumiy tamoyili</h1>
+
+        <div class="card">
+            <h3>Yangi mahsulot qo'shish</h3>
+
+            <input type="text" id="recipeTitle" placeholder="Ovqat nomi">
+
+            <textarea id="recipeIngredients" placeholder="Ingredientlar"></textarea>
+
+            <textarea id="recipeSteps" placeholder="Tayyorlanishi"></textarea>
+
+            <input type="file" id="recipeImgFile" accept="image/*">
+
+            <button onclick="addRecipe()">✅ Bazaga saqlash</button>
+        </div>
+
+        <div class="card">
+            <h3>Mavjud retseptlar</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ovqat nomi</th>
+                        <th>Ingredientlar</th>
+                        <th>Tayyorlanishi</th>
+                        <th>Amallar</th>
+                    </tr>
+                </thead>
+                <tbody id="adminRecipeList"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="baza.js"></script>
+
+    <script>
+        function getBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        function updateAdminTable() {
+            const recipes = getRecipes();
+            const tableBody = document.getElementById('adminRecipeList');
+
+            tableBody.innerHTML = recipes.map((r, index) => `
+                <tr>
+                    <td><b>${r.title}</b></td>
+                    <td>${r.ingredients}</td>
+                    <td>${r.steps}</td>
+                    <td>
+                        <button onclick="removeRecipe(${index})"
+                        style="background:#e74c3c;color:white;border:none;padding:5px 10px;border-radius:4px;">
+                        O'chirish
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        async function addRecipe() {
+            const title = document.getElementById('recipeTitle').value;
+            const ingredients = document.getElementById('recipeIngredients').value;
+            const steps = document.getElementById('recipeSteps').value;
+            const file = document.getElementById('recipeImgFile').files[0];
+
+            if (!title || !ingredients || !steps || !file) {
+                alert("Hamma maydonni to‘ldir!");
+                return;
+            }
+
+            const img = await getBase64(file);
+
+            const recipes = getRecipes();
+
+            recipes.push({
+                title,
+                ingredients,
+                steps,
+                img
+            });
+
+            saveRecipes(recipes);
+            updateAdminTable();
+
+            alert("Saqlandi!");
+        }
+
+        function removeRecipe(index) {
+            const recipes = getRecipes();
+            recipes.splice(index, 1);
+            saveRecipes(recipes);
+            updateAdminTable();
+        }
+
+        window.onload = updateAdminTable;
+    </script>
+
+</body>
+
+</html>

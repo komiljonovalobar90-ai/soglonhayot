@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Sog'lom Ovqatlanish</title>
+    <link rel="stylesheet" href="./css/media.css">
+    <style>
+        /* =======================
+   RESET
+======================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* =======================
+   ROOT COLORS
+======================= */
+        :root {
+            --primary: #4CAF50;
+            --dark: #2e7d32;
+            --light: #f4f4f4;
+        }
+
+        /* =======================
+   BODY
+======================= */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--light);
+            display: flex;
+        }
+
+        /* =======================
+   SIDEBAR
+======================= */
+        .sidebar {
+            width: 240px;
+            background: #1e1e2f;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* linklar */
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: #ccc;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* =======================
+   MAIN CONTENT
+======================= */
+        .main-content {
+            margin-left: 240px;
+            padding: 30px;
+            width: calc(100% - 240px);
+        }
+
+        /* =======================
+   CARD
+======================= */
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* =======================
+   FORM
+======================= */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        /* =======================
+   BUTTON
+======================= */
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: var(--dark);
+        }
+
+        /* =======================
+   TABLE
+======================= */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* =======================
+   FLEX ROW
+======================= */
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .flex-1 {
+            flex: 1;
+        }
+
+        /* =======================
+   RESPONSIVE
+======================= */
+
+        /* Tablet */
+        @media (max-width: 992px) {
+
+            body {
+                display: block;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .row {
+                flex-direction: column;
+            }
+        }
+
+        /* Telefon */
+        @media (max-width: 600px) {
+
+            .sidebar {
+                padding: 10px;
+            }
+
+            .sidebar a {
+                display: inline-block;
+                margin-right: 10px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            input,
+            textarea,
+            select {
+                font-size: 14px;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2>Admin</h2>
+
+        <a href="./admin.html">🏠 Bosh sahifa</a>
+        <a href="./soglomadmin.html">🥗 Sog‘lom ovqat</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Retseptlar Boshqaruvi</h1>
+
+        <div class="card">
+            <h3>Yangi retsept qo'shish</h3>
+            <div id="recipeForm">
+                <div class="form-group">
+                    <label>Retsept nomi</label>
+                    <input type="text" id="recipeTitle" placeholder="Masalan: Grechka va sabzavot">
+                </div>
+
+                <div class="form-group">
+                    <label>Mahsulot haqida ma'lumot (Vitaminlar va foydalari)</label>
+                    <textarea id="recipeDesc" rows="4"
+                        placeholder="Masalan: A vitamin — 6 foiz; Bir dona tuxum jami 77 kaloriya..."></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="form-group flex-1">
+                        <label>Vaqt (daqiqada)</label>
+                        <input type="text" id="recipeTime" placeholder="Masalan: 25 min">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label>Kaloriya (kcal)</label>
+                        <input type="number" id="recipeCal" placeholder="420">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label>Kategoriya (Tag)</label>
+                        <select id="recipeTag">
+                            <option value="breakfast">Nonushta</option>
+                            <option value="snack">Oraliq yengil taom</option>
+                            <option value="lunch">Tushlik</option>
+                            <option value="poldin">Poldin</option>
+                            <option value="dinner">Kechki ovqat</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Rasm yuklash</label>
+                    <input type="file" id="recipeImgFile" accept="image/*">
+                </div>
+
+                <button onclick="addRecipe()">✅ Bazaga saqlash</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Mavjud retseptlar</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nomi</th>
+                        <th>Vaqt</th>
+                        <th>Kaloriya</th>
+                        <th>Kategoriya</th>
+                        <th>Amallar</th>
+                    </tr>
+                </thead>
+                <tbody id="adminRecipeList">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="baza.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+    </script>
+    <script>
+        // 1. Rasmni o'qish va Base64 formatiga o'tkazish
+        function getBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // 2. Jadvalni yangilash
+        function updateAdminTable() {
+            if (typeof getRecipes !== "function") {
+                console.error("Xato: baza.js yuklanmagan yoki getRecipes funksiyasi topilmadi!");
+                return;
+            }
+
+            const recipes = getRecipes();
+            const tableBody = document.getElementById('adminRecipeList');
+            if (!tableBody) return;
+
+            tableBody.innerHTML = recipes.map((r, index) => `
+            <tr>
+                <td><b>${r.title}</b></td>
+                <td>${r.time}</td>
+                <td>${r.cal} kcal</td>
+                <td><span class="tag">${r.tags}</span></td>
+                <td>
+                    <button onclick="removeRecipe(${index})" style="background:#e74c3c; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">
+                        O'chirish
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+        }
+
+        // 3. Yangi retsept qo'shish
+        async function addRecipe() {
+            const titleEl = document.getElementById('recipeTitle');
+            const timeEl = document.getElementById('recipeTime');
+            const calEl = document.getElementById('recipeCal');
+            const tagEl = document.getElementById('recipeTag');
+            const descEl = document.getElementById('recipeDesc');
+            const fileInput = document.getElementById('recipeImgFile');
+
+            // Tekshirish
+            if (!titleEl.value || !timeEl.value || !calEl.value || fileInput.files.length === 0) {
+                alert("Iltimos, hamma maydonlarni to'ldiring va rasm tanlang!");
+                return;
+            }
+
+            try {
+                const imageBase64 = await getBase64(fileInput.files[0]);
+
+                const recipes = getRecipes();
+                const newRecipe = {
+                    title: titleEl.value,
+                    time: timeEl.value,
+                    cal: calEl.value,
+                    tags: tagEl.value,
+                    img: imageBase64,
+                    desc: descEl.value || (titleEl.value + " haqida foydali ma'lumotlar.")
+                };
+
+                recipes.push(newRecipe);
+                saveRecipes(recipes);
+                updateAdminTable();
+
+                // Tozalash
+                titleEl.value = '';
+                timeEl.value = '';
+                calEl.value = '';
+                descEl.value = '';
+                fileInput.value = '';
+
+                alert("Mahsulot muvaffaqiyatli saqlandi!");
+            } catch (error) {
+                console.error("Xatolik:", error);
+                alert("Rasmni yuklashda xatolik yuz berdi!");
+            }
+        }
+
+        // 4. O'chirish
+        function removeRecipe(index) {
+            if (confirm("Haqiqatan ham ushbu retseptni o'chirmoqchimisiz?")) {
+                const recipes = getRecipes();
+                recipes.splice(index, 1);
+                saveRecipes(recipes);
+                updateAdminTable();
+            }
+        }
+
+        // Sahifa yuklanganda jadvalni yangilash
+        window.onload = updateAdminTable;
+    </script>
+
+</body>
+
+</html>

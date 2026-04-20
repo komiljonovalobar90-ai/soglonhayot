@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Kalkulyatori</title>
+    <link rel="stylesheet" href="css/kalkulyator.css">
+    <script src="java skrip/java.js"></script>
+    <!-- <style>
+        /* CSS QISMI */
+    </style> -->
+</head>
+<body>
+
+    <div class="bmi-calculator">
+        <h2>🏋️ BMI (Tana Vazn Indeksi) Kalkulyatori</h2>
+        
+        <div class="input-group">
+            <label for="weight">Vazn (kg):</label>
+            <input type="number" id="weight" placeholder="Masalan: 70" step="0.1" required>
+        </div>
+        
+        <div class="input-group">
+            <label for="height">Bo'y (metr):</label>
+            <input type="number" id="height" placeholder="Masalan: 1.75" step="0.01" required>
+        </div>
+        
+        <button onclick="calculateBMI()">Hisoblash</button>
+        
+        <div id="result">
+            Natija shu yerda ko'rinadi.
+        </div>
+    </div>
+   
+
+    <!-- <script>
+        /* JAVASCRIPT QISMI */
+        
+    </script> -->
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+/* =======================
+   GLOBAL
+======================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f4f4;
+    display: flex;
+}
+
+/* =======================
+   SIDEBAR
+======================= */
+.sidebar {
+    width: 220px;
+    background: #1e1e2f;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar h2 {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #ccc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #4CAF50;
+    color: white;
+}
+
+/* =======================
+   MAIN CONTENT
+======================= */
+.main-content {
+    margin-left: 220px;
+    padding: 30px;
+    width: 100%;
+}
+
+/* =======================
+   CARD
+======================= */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* =======================
+   FORM
+======================= */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2e7d32;
+}
+
+/* =======================
+   FLEX ROW
+======================= */
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+/* =======================
+   TABLE
+======================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #4CAF50;
+    color: white;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+
+    body {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}
+
+/* Telefon */
+@media (max-width: 600px) {
+
+    .sidebar {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    input, textarea, select {
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* =======================
+   RESET
+======================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =======================
+   BODY
+======================= */
+body {
+    font-family: sans-serif;
+    background: #f4f4f4;
+    display: flex;
+}
+
+/* =======================
+   SIDEBAR (PC)
+======================= */
+.sidebar {
+    width: 220px;
+    background: #1e1e2f;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* linklar */
+.sidebar a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #4CAF50;
+    color: white;
+}
+
+/* =======================
+   MAIN CONTENT
+======================= */
+.main-content {
+    margin-left: 220px;
+    padding: 30px;
+    width: calc(100% - 220px);
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 768px) {
+
+    body {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+}
